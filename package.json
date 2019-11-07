@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node index",
+    "lint": "eslint --fix --ignore-path .gitignore .",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-strongloop": "^2.1.0"
+  }
+}
