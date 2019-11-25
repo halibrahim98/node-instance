@@ -1,15 +1,14 @@
 {
-  "dependencies": {
-    "express": "^4.17.1"
-  },
+  "name": "node-instance",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node index",
-    "lint": "eslint --fix --ignore-path .gitignore .",
-    "test": "mocha"
+    "start": "node ./bin/www"
   },
-  "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.6.0",
-    "eslint-config-strongloop": "^2.1.0"
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
   }
 }

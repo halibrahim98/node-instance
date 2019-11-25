@@ -1,12 +1,22 @@
-/*eslint handle-callback-err: "off"*/
-let express=require('express')
+let express = require('express');
+let morgan = require('morgan');
 
-let app=express()
+let app = express();
 
-app.use('/', (req,res,next) => {
-    res.statusCode=200
-    res.setHeader('Content-Type','text/plain')
-    res.end('Hello World')
-})
+app.use(morgan('combined'));
 
-app(8080,'127.0.0.1')
+app.get('/welcome/:msgId', (req, res, next) => { 
+    res.statusCode = 200; 
+    res.setHeader('Content-Type', 'application/json'); 
+    let msg = {
+        "1": "Hello",
+        "2": "Bye" 
+    }
+    res.json({ message: msg[ req.params.msgId ] || "Unknown"});
+    res.end(); 
+});
+
+
+
+// app.listen(8080, '0.0.0.0');
+module.exports = app;
