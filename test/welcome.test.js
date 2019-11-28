@@ -18,4 +18,5 @@ describe('Getting products', () => {
         expect(res.statusCode).equals(200)
         expect(res.body).to.have.property('data').to.deep.equal({id: 1, name: "Laptop"}) 
     })
+    
 })
