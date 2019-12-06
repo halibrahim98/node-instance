@@ -1,1 +1,1 @@
-exports.db ='mongodb://0.0.0.0:27017'
+exports.db ='mongodb+srv://halibrahim:ohhaimark@cluster0-itnms.mongodb.net/test?retryWrites=true&w=majority'

@@ -7,25 +7,9 @@ const productSchema =new mongoose.Schema({
 module.exports = mongoose.model('Product', productSchema)
 
 exports.getAllProducts = function(){
-    return
-    [
-        {
-            id:1,
-            name:"Laptop"
-        },
-        {
-            id:2,
-            name:"Screen"
-        }
-    ]
+    db.products.find()
 }
 
 exports.getOneProduct = function(){
-    return
-    [
-        {
-            id:1,
-            name:"Laptop"
-        }
-    ]
+    db.products.find({"id": 1})
 }
