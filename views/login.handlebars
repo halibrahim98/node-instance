@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+		#status{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<h2>Login Form</h2>
+	<form action="/login" method="POST">
+		Email: <input id="email" type="text" name="email"><br>
+		Password: <input id="password" type="text" name="password"><br>
+		<input id="submit" type="submit" value="Submit" disabled>
+	</form>
+	<p id="status"></p>
+</body>
+
+<script>
+	var emailHtml = document.getElementById("email");
+	var passwordHtml = document.getElementById("password");
+
+	var submitHtml = document.getElementById("submit");
+
+	var statusHtml = document.getElementById("status");
+
+	document.addEventListener('keyup',(e)=>{
+
+		let email = emailHtml.value.trim();
+		let password = passwordHtml.value.trim();
+
+		//Check if all inputs are filled
+		let isFormFilled = email.length && password.length;
+
+		statusHtml.innerHTML = isFormFilled ? "" : "Form not filled out!";
+		
+		if(isFormFilled){
+			submitHtml.disabled = false;
+		}else{
+			submitHtml.disabled = true;
+		}
+
+	})
+</script>
+</html>

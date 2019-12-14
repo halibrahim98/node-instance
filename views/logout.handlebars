@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+		.loading:after {
+		  content: ' ...';
+		  animation: dots 1s steps(5, end) infinite;}
+
+		@keyframes dots {
+		  0%, 20% {
+		    color: rgba(0,0,0,0);
+		    text-shadow:
+		      .25em 0 0 rgba(0,0,0,0),
+		      .5em 0 0 rgba(0,0,0,0);}
+		  40% {
+		    color: white;
+		    text-shadow:
+		      .25em 0 0 rgba(0,0,0,0),
+		      .5em 0 0 rgba(0,0,0,0);}
+		  60% {
+		    text-shadow:
+		      .25em 0 0 white,
+		      .5em 0 0 rgba(0,0,0,0);}
+		  80%, 100% {
+		    text-shadow:
+		      .25em 0 0 white,
+		      .5em 0 0 white;}}
+
+	</style>
+</head>
+<body>
+	<p class="loading">Logging out</p>
+</body>
+
+<script>
+	let userid = localStorage.userid;
+	localStorage.token = '';
+	localStorage.userid = '';
+	localStorage.name = '';
+
+	localStorage.isLoggedIn = false;
+
+	post('/logout', {userid: userid});
+
+	function post(path, params, method='post') {
+	  const form = document.createElement('form');
+	  form.method = method;
+	  form.action = path;
+
+	  for (const key in params) {
+	    if (params.hasOwnProperty(key)) {
+	      const hiddenField = document.createElement('input');
+	      hiddenField.type = 'hidden';
+	      hiddenField.name = key;
+	      hiddenField.value = params[key];
+
+	      form.appendChild(hiddenField);
+	    }
+	  }
+	  document.body.appendChild(form);
+	  form.submit();
+	}
+</script>
+
+</html>

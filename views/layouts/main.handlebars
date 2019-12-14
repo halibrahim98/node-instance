@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hussain's Useless Forums</title>
+
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+		html,div,h1{
+			font-family: 'Roboto', sans-serif;
+		}
+		
+		input{
+			margin-bottom: 5px;
+		}
+		#message{
+			font-style: italic;
+			color: green;
+		}
+
+		#error{
+			font-style: italic;
+			color: red;
+		}
+
+		#postfunctions{
+			visibility:hidden;
+		}
+			
+		#username{
+			margin:0;
+		}
+
+		.idInfo{
+			margin: 0px;
+			font-size: 10px;
+			font-style: italic;
+		}
+	</style>
+</head>
+<body>
+	<h1>Hussain's Useless Fourms</h1>
+	
+	<h5 id="message">{{message}}</h5>
+	<h5 id="error">{{error}}</h5>
+
+	<p id="username"></p>
+	<p id="uuid" class="idInfo"></p>
+
+	<input type="submit" value="Login" onclick="window.location='/login'" />
+	<input type="submit" value="Register" onclick="window.location='/register'" />
+
+	<input type="submit" value="Logout" onclick="window.location='/logout'"/>
+
+	<br>
+	
+	<input type="submit" value="Read Posts" onclick="window.location='/post/all'" />
+	
+
+	<div id="postfunctions">
+		<input type="submit" value="Create Posts" onclick="window.location=''" />
+		<input type="submit" value="Edit Posts" onclick="window.location=''" />
+		<input type="submit" value="Delete Posts" onclick="window.location=''" />
+	</div>
+	
+	<input type="submit" value="Debug" onclick="window.location=''" />
+
+	<br>
+
+	{{{body}}}
+</body>
+
+<script>
+	var isLoggedIn = localStorage.isLoggedIn;
+	var token = localStorage.token;
+	var userid = localStorage.userid;
+	var	name = localStorage.name;
+
+	if(isLoggedIn){
+		console.log("logged in!");
+		document.getElementById("postfunctions").style.visibility = 'visible';
+		document.getElementById("username").innerHTML = `Logged in as: ${name}`;
+		document.getElementById("uuid").innerHTML = userid;
+
+	}else{
+		document.getElementById("postfunctions").style.visibility = 'hidden';
+		document.getElementById("username").innerHTML = '';
+		document.getElementById("uuid").innerHTML = '';
+	}
+
+</script>
+
+</html>

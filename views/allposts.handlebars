@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		table, th, td {
+		  border: 1px solid black;
+		}
+
+		th, td {
+		  padding: 15px;
+		}
+		
+	</style>
+</head>
+<body>
+	<br>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Date</th>
+			<th>Actions</th>
+		</tr>
+		{{#each posts}}
+		<tr>
+			<td>{{title}}
+				<p class="idInfo">ID: {{postid}}</p>
+			</td>
+			<td>{{authorname}}
+				<p class="idInfo">ID: {{authorid}}</p>
+				</td>
+			<td>{{createdOn}}</td>
+
+			<td>
+				<input type="submit" value="View Post" onclick="window.location='/post/{{postid}}'" />
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</body>
+</html>

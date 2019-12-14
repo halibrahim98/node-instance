@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		#status,#status2{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<h2>Register Form</h2>
+	<form action="/register" method="POST">
+		Email: <input id="email" type="text" name="email"><br>
+		Name: <input id="name" type="text" name="name"><br>
+		Password: <input id="password" type="text" name="password"><br>
+		<input id="submit" type="submit" value="Submit" disabled>
+	</form>
+
+	<p id="status"></p>
+	<p id="status2"></p>
+</body>
+
+<script>
+	var emailHtml = document.getElementById("email");
+	var nameHtml = document.getElementById("name");
+	var passwordHtml = document.getElementById("password");
+
+	var submitHtml = document.getElementById("submit");
+
+	var statusHtml = document.getElementById("status");
+	var statusHtml2 = document.getElementById("status2");
+
+	document.addEventListener('keyup',(e)=>{
+
+		let email = emailHtml.value.trim();
+		let name = nameHtml.value.trim();
+		let password = passwordHtml.value.trim();
+
+		//Is Valid Email
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		let isValidEmail = re.test(email);
+
+		statusHtml.innerHTML = isValidEmail ? "" : "Invalid Email!";
+
+		//Check if all inputs are filled
+		let isFormFilled = email.length && name.length && password.length;
+
+		statusHtml2.innerHTML = isFormFilled ? "" : "Form not filled out!";
+		
+		if(isValidEmail && isFormFilled){
+			submitHtml.disabled = false;
+		}else{
+			submitHtml.disabled = true;
+		}
+
+	})
+
+	test();
+</script>
+
+</html>
